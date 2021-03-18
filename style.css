@@ -1,0 +1,41 @@
+header {
+    background-color: white;
+    margin-top: 12px;
+    margin-bottom: 12px;    
+}
+header a {
+    color: #af4ca2;
+    text-decoration: none;
+    padding-right: 12px;
+}
+a:hover {
+    color: hotpink;
+}
+header div {
+    margin-left: 6px;
+}
+
+* {
+    font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+table td, table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+/* table tr:nth-child(even){
+    background-color: #f2f2f2;
+} */
+table tr:hover{
+    background-color: #ddd;
+}
+table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #af4ca2;
+    color: white;
+}
