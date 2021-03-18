@@ -1,9 +1,9 @@
 # 2 sprinto projekto darbas
 
-# Personalo valdymo sistema (CRUD app)
-# Jūs galite:
-##   talpinti(įterpti), redaguoti(update), trinti(delete) darbuotojus;
-##   talpinti(įterpti), redaguoti(update), trinti(delete) projektus. Projekte gali dirbti > 1 darbuotojas.
+### Personalo valdymo sistema (CRUD app)
+### Jūs galite:
+###   talpinti(įterpti), redaguoti(update), trinti(delete) darbuotojus;
+###   talpinti(įterpti), redaguoti(update), trinti(delete) projektus. Projekte gali dirbti > 1 darbuotojas.
 
 ### Paleidimas:
 ### * klonuokite git direktoriją
