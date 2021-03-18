@@ -87,7 +87,7 @@
 <br>
 <form action="" method="POST">
   <label for="fname">Įveskite projekto pavadinimą:</label><br>
-  <input type="text" id="fname" name="fname" value="Jonas"><br>
+  <input type="text" id="fname" name="fname" value="PHPv1"><br>
   <input type="submit" name="create_proj" value="Įvesti">
 </form> 
 

@@ -1,14 +1,6 @@
 <?php
 
-    $servername = 'localhost'; 
-    $username = 'root'; 
-    $password = 'mysql'; 
-    $dbname = 'mini_project';
-
-    $conn = mysqli_connect($servername, $username, $password, $dbname);
-    if (!$conn) {
-        die('Connection failed: ' . mysqli_connect_error());
-    }
+    require_once './dbconnect.php';
 
     if (isset($_POST['create_empl'])) {
         $stmt = $conn->prepare("INSERT INTO employees (firstname, lastname) VALUES (?, ?)");
