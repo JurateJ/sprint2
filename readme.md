@@ -4,9 +4,11 @@
 ### darbuotojų talpinimas, redagavimas, trynimas
 ### projektų talpinimas, redagavimas, trynimas, darbuotojams (projekte gali dirbti >1 darbuotojas)
 
-Paleidimas:
-Klonuokite git direktoriją
-importuokite MySql dump.sql failą
+#### Paleidimas:
+#### * klonuokite git direktoriją
+#### * importuokite MySql dump.sql failą
+
+Darbą atliko [Jūratė](https://github.com/JurateJ/sprint2)
 
 
 
