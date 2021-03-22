@@ -1,19 +1,20 @@
 <?php
 
     require_once './dbconnect.php';
-
+    
+    //create employee
     if (isset($_POST['create_empl'])) {
-        $stmt = $conn->prepare("INSERT INTO employees (firstname, lastname) VALUES (?, ?)");
-        $stmt->bind_param("ss", $firstname, $lastname);
+        $stmt = $conn->prepare("INSERT INTO employees (firstname) VALUES (?)");
+        $stmt->bind_param("s", $firstname);
         $firstname = $_POST['fname'];
-        $lastname = $_POST['lname'];
         var_dump($_POST);
         $stmt->execute();
         $stmt->close();
         header('Location: ' . $_SERVER['PHP_SELF'] . '?' . $_SERVER['QUERY_STRING']);
         die();
     }
-    
+
+    //delete employee   
     if(isset($_GET['action']) == 'delete'){
         $sql = 'DELETE FROM Employees WHERE id = ?';
         $stmt = $conn->prepare($sql);
@@ -44,31 +45,40 @@
       <div>
             <a href="projektai.php" title="">Projektai</a>
             
-            <a href="projektai.php" title="">Darbuotojai</a>
+            <a href="index.php" title="">Darbuotojai</a>
         </div>
       <br>    
     </div>
 
 </header>
+
     <?php
-        $sql = 'SELECT id, firstname, lastname FROM employees';
+        
+        $sql = "SELECT employees.id, employees.firstname, projektai.prpav 
+                FROM employees
+                LEFT JOIN projektai 
+                ON employees.proj_id = projektai.id 
+                ORDER BY id";
+
         $result = mysqli_query($conn, $sql);
 
         if (mysqli_num_rows($result) > 0) {
+
+            $counter = 1;
             print('<table>');
             print('<thead>');
-            print('<tr><th>Id</th><th>Vardas</th><th>Pavardė</th><th>Veiksmai</th></tr>');
+            print('<tr><th>Nr.</th><th>Vardas</th><th>Dirba projekte</th><th>Veiksmai</th></tr>');
             print('</thead>');
             print('<tbody>');
             while($row = mysqli_fetch_assoc($result)) {
                 print('<tr>' 
-                    . '<td>' . $row['id'] . '</td>' 
+                    . '<td>' . $counter++ . '</td>' 
                     . '<td>' . $row['firstname'] . '</td>' 
-                    . '<td>' . $row['lastname'] . '</td>'
+                    . '<td>' . $row['prpav'] . '</td>' 
                     . '<td>' . '<a href="?action=delete&id='  . $row['id'] . '"><button>DELETE</button></a>'
                     . ' ' 
-                    . '<a href="?action=update&id='  . $row['id'] . '"><button>UPDATE</button></a>' . '</td>'
-                    . '</tr>');
+                    . '</tr>'
+                );
             }
             print('</tbody>');
             print('</table>');
@@ -80,10 +90,8 @@
 
 <br>
 <form action="" method="POST">
-  <label for="fname">Įveskite darbuotojo vardą:</label><br>
-  <input type="text" id="fname" name="fname" value="Jonas"><br>
-  <label for="lname">Įveskite darbuotojo pavardę:</label><br>
-  <input type="text" id="lname" name="lname" value="Donas"><br>
+  <label for="fname">Įveskite NAUJO darbuotojo vardą:</label><br>
+  <input type="text" id="fname" name="fname" size="28" value=""><br>
   <input type="submit" name="create_empl" value="Įvesti">
 </form> 
 

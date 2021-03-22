@@ -1,15 +1,13 @@
 <?php
 
-    $servername = 'localhost'; 
-    $username = 'root'; 
-    $password = 'mysql'; 
-    $dbname = 'mini_project';
-
+    require_once './dbconnect.php';
+    
     $conn = mysqli_connect($servername, $username, $password, $dbname);
     if (!$conn) {
         die('Connection failed: ' . mysqli_connect_error());
     }
 
+    // insert 
     if (isset($_POST['create_proj'])) {
         $stmt = $conn->prepare("INSERT INTO projektai (prpav) VALUES (?)");
         $stmt->bind_param("s", $prpav);
@@ -21,6 +19,7 @@
         die();
     }
     
+    //delete
     if(isset($_GET['action']) == 'delete'){
         $sql = 'DELETE FROM projektai WHERE id = ?';
         $stmt = $conn->prepare($sql);
@@ -58,22 +57,29 @@
 
 </header>
     <?php
-        $sql = 'SELECT id, prpav FROM projektai';
+
+        $sql = "SELECT projektai.id, projektai.prpav, group_concat(employees.firstname SEPARATOR ', ') 
+                AS names
+                FROM projektai
+                LEFT JOIN employees ON projektai.id = employees.proj_id
+                GROUP BY projektai.id";
+
         $result = mysqli_query($conn, $sql);
 
         if (mysqli_num_rows($result) > 0) {
+            $counter = 1;
             print('<table>');
             print('<thead>');
-            print('<tr><th>Id</th><th>Pavadinimas</th><th>Darbuotojai</th><th>Veiksmai</th></tr>');
+            print('<tr><th>Nr.</th><th>Projektas</th><th>Projekte dirba </th><th>Veiksmai</th></tr>');
             print('</thead>');
             print('<tbody>');
             while($row = mysqli_fetch_assoc($result)) {
                 print('<tr>' 
-                    . '<td>' . $row['id'] . '</td>' 
-                    . '<td>' . $row['prpav'] . '</td>' 
+                    . '<td>' . $counter++ . '</td>' 
+                    . '<td>' . $row['prpav'] . '</td>'
+                    . '<td>' . $row['names'] . '</td>'  
                     . '<td>' . '<a href="?action=delete&id='  . $row['id'] . '"><button>DELETE</button></a>'
                     . ' ' 
-                    . '<a href="?action=update&id='  . $row['id'] . '"><button>UPDATE</button></a>' . '</td>'
                     . '</tr>');
             }
             print('</tbody>');
@@ -86,10 +92,11 @@
 
 <br>
 <form action="" method="POST">
-  <label for="fname">Įveskite projekto pavadinimą:</label><br>
-  <input type="text" id="fname" name="fname" value="PHPv1"><br>
+  <label for="fname">Įveskite NAUJO projekto pavadinimą:</label><br>
+  <input type="text" id="fname" name="fname" value=""><br>
   <input type="submit" name="create_proj" value="Įvesti">
 </form> 
+<br>
 
 </body>
 </html>
