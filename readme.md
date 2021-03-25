@@ -2,8 +2,8 @@
 
 Personalo valdymo sistema. 
 Jūs galite:
-  * talpinti (įterpti), trinti (delete) darbuotojus;
-  * talpinti (įterpti), atnaujinti(update), trinti (delete) projektus. Projekte gali dirbti > 1 darbuotojas.
+  * įvesti, atnaujinti, ištrinti darbuotojus;
+  * įvesti, atnaujinti, ištrinti projektus. Projekte gali dirbti > 1 darbuotojas.
 
 Paleidimas:
   * klonuokite git direktoriją https://github.com/JurateJ/sprint2

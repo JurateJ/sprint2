@@ -78,9 +78,9 @@
                     . '<td>' . $counter++ . '</td>' 
                     . '<td>' . $row['prpav'] . '</td>'
                     . '<td>' . $row['names'] . '</td>'  
-                    . '<td>' . '<a href="?action=delete&id='  . $row['id'] . '"><button>DELETE</button></a>'
+                    . '<td>' . '<a href="?action=delete&id='  . $row['id'] . '"><button>Ištrinti</button></a>'
                     . ' '
-                    . '<a href="fupdate.php?id=' . $row['id'] . '"><button>UPDATE</button></a>
+                    . '<a href="pupdate.php?id=' . $row['id'] . '"><button>Atnaujinti</button></a>
                        </td>'                   
                     . '</tr>');
             }

@@ -76,8 +76,10 @@
                     . '<td>' . $counter++ . '</td>' 
                     . '<td>' . $row['firstname'] . '</td>' 
                     . '<td>' . $row['prpav'] . '</td>' 
-                    . '<td>' . '<a href="?action=delete&id='  . $row['id'] . '"><button>DELETE</button></a>'
+                    . '<td>' . '<a href="?action=delete&id='  . $row['id'] . '"><button>Ištrinti</button></a>'
                     . ' ' 
+                    . '<a href="dupdate.php?id=' . $row['id'] . '"><button>Atnaujinti</button></a>
+                       </td>'
                     . '</tr>'
                 );
             }
