@@ -79,7 +79,9 @@
                     . '<td>' . $row['prpav'] . '</td>'
                     . '<td>' . $row['names'] . '</td>'  
                     . '<td>' . '<a href="?action=delete&id='  . $row['id'] . '"><button>DELETE</button></a>'
-                    . ' ' 
+                    . ' '
+                    . '<a href="fupdate.php?id=' . $row['id'] . '"><button>UPDATE</button></a>
+                       </td>'                   
                     . '</tr>');
             }
             print('</tbody>');
