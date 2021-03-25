@@ -2,7 +2,7 @@
 
 Personalo valdymo sistema. 
 Jūs galite:
-  * įvesti, atnaujinti, ištrinti darbuotojus;
+  * įvesti, atnaujinti, ištrinti darbuotojus. Atnaujindami darbuotojus galite priskirti juos projektui.
   * įvesti, atnaujinti, ištrinti projektus. Projekte gali dirbti > 1 darbuotojas.
 
 Paleidimas:
