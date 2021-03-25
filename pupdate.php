@@ -12,7 +12,6 @@
 
 require_once './dbconnect.php';
 
-// $id = $_GET['id']; 
 if (isset($_GET['id']) && intval($_GET['id'])) {
     $id = (int) $_GET['id'];
     
@@ -28,7 +27,7 @@ if (isset($_GET['id']) && intval($_GET['id'])) {
         if($edit)
         {
             mysqli_close($conn); // Close connection
-            header("location:./?path=projektai"); // redirects 
+            header("location:projektai.php"); // redirects 
             exit;
         }
         else
@@ -41,9 +40,9 @@ if (isset($_GET['id']) && intval($_GET['id'])) {
 
 <br>
 <form method="POST" >
-    <label for="prpav">Atnaujinkite projekto pavadinimą:</label>
-    <input type="text" name="name" id="prpav" value="<?php echo $row['prpav'] ?>" placeholder="Update Project Name" Required>
-    <input type="submit" name="update" value="Atnauijinti" >
+    <label for="prpav">Atnaujinkite PROJEKTO pavadinimą:</label>
+    <input type="text" name="name" id="prpav" value="<?php echo $row['prpav'] ?>" >
+    <input type="submit" name="update" value="Atnaujinti" >
 </form>
 </body>
 </html>
